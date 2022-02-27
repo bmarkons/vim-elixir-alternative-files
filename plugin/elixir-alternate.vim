@@ -1,17 +1,17 @@
 function! ElixirGetAlternateFilenameForImplementation(filepath)
   let currentFileRoot = split(a:filepath, ".ex$")[0]
 
-  let pathWithoutLib = split(currentFileRoot, "^apps/lib/")[0]
-  let fileToOpen = "test/" . pathWithoutLib . "_test.exs"
+  let pathWithoutLib = split(currentFileRoot, "^lib/")[0]
+  let fileToOpen = "apps/test/" . pathWithoutLib . "_test.exs"
 
   return fileToOpen
 endfunction
 
 function! ElixirGetAlternateFilenameForTest(filepath)
   let currentFileRoot = split(a:filepath, "_test.exs$")[0]
-  let pathWithoutTest = split(currentFileRoot, "^apps/test/")[0]
+  let pathWithoutTest = split(currentFileRoot, "^test/")[0]
 
-  let fileToOpen = "lib/" . pathWithoutTest . ".ex"
+  let fileToOpen = "apps/lib/" . pathWithoutTest . ".ex"
   
   return fileToOpen
 endfunction
